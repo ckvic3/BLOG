@@ -80,6 +80,8 @@ func AddBlog(c *gin.Context) {
 		c.Request.ParseForm()
 
 		data := make(map[string]interface{})
+		fmt.Println(c.Request.PostForm.Get("content"))
+
 		data["title"] = c.Request.PostForm.Get("title")
 		data["content"] = c.Request.PostForm.Get("content")
 		id := com.StrTo(c.Param("id")).MustInt()
@@ -119,7 +121,7 @@ func RouterInit() *gin.Engine {
 	r.GET("/blogs", GetBlogs)
 	r.GET("/blogadd", AddBlog)
 	r.POST("/save/:id", AddBlog)
-	r.GET("/edit/:id", UpdateBlog)
+	r.GET("/update/:id", UpdateBlog)
 	r.GET("/delete/:id", DeleteBlog)
 	// v1.DELETE("/blog/:id")
 

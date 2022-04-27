@@ -48,25 +48,27 @@
     <div><input type="submit" value="Del"> </div>
 </form> -->
 
-<link rel="stylesheet" href="editormd/css/editormd.css" />
-<form action="/save/{{.ID}}" method="POST"></form>
-<div id="test-editor" name="content">
-    <textarea style="display:none;">### 关于 Editor.md
+<link rel="stylesheet" href="/static/editormd/css/editormd.css" />
+
+<form action="/save/{{.ID}}" method="POST">
+<div id="test-editor" >
+    <textarea name="content" style="display:none;">### 关于 Editor.md
 
 **Editor.md** 是一款开源的、可嵌入的 Markdown 在线编辑器（组件），基于 CodeMirror、jQuery 和 Marked 构建。
     </textarea>
-    
 </div>
 <div><input type="submit" value="Save" style="float: left;"></div>
 </form>
+
 <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
-<script src="editormd/editormd.min.js"></script>
+<script src="/static/editormd/editormd.min.js"></script>
 <script type="text/javascript">
-    $(function() {
+    $(function () {
         var editor = editormd("test-editor", {
             // width  : "100%",
             // height : "100%",
-            path   : "editormd/lib/"
+            path: "../static/editormd/lib/",
+            saveHTMLToTextarea: true
         });
     });
 </script>

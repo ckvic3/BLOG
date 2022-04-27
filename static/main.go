@@ -9,8 +9,9 @@ import (
 
 func main() {
 	r := router.RouterInit()
-	r.Static("/static", "./")
-	r.LoadHTMLFiles("blog.html", "index.html", "add.html", "edit.html")
+	r.Static("./static", "./static")
+	r.Static("./edit", "./static/editormd")
+	r.LoadHTMLFiles("./static/blog.html", "./static/index.html", "./static/add.html", "./static/edit.html")
 	s := &http.Server{
 		Addr:           fmt.Sprintf(":%d", 8000),
 		Handler:        r,
