@@ -1,0 +1,39 @@
+<head>
+    <link rel="stylesheet" href="/static/style.css">
+   
+</head>
+
+<body>
+    <section id="intro">
+        <div class="container">
+    
+            {{ range $i,$post := .blogs }}
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2 opening-statement">
+                        <div class="col-md-4">
+                            <h3><a href="blog/{{.ID}}">{{.Title}}</a></h3>
+                        </div>
+                        <div class="col-md-8">
+                            <p class="pull-right readMore">
+                                <a href="blog/{{.ID}}">Read More...</a>
+                            </p>
+                        </div>
+                        <div class="clearfix"></div>
+                        <hr class="nogutter">
+                    </div>
+                </div>
+    
+            {{end}}
+    
+    
+            <nav class="pagination" role="pagination">
+                {{if ne .paginate.Last .paginate.Current}}
+                    <a class="pull-left" href="/?page={{.paginate.Last}}">← Prev Page</a>
+                {{end}}
+                {{if ne .paginate.Next .paginate.Current}}
+                    <a class="pull-right" href="/?page={{.paginate.Last}}">Next Page →</a>
+                {{end}}
+            </nav>
+        </div>
+    </section>
+</body>
